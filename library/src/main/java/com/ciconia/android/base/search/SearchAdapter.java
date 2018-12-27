@@ -1,4 +1,4 @@
-package com.ciconia.ciconiabase.search;
+package com.ciconia.android.base.search;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -12,7 +12,7 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ciconia.library.R;
+import com.ciconia.android.base.R;
 
 import java.util.ArrayList;
 import java.util.List;

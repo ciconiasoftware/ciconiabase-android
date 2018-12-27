@@ -1,4 +1,4 @@
-package com.ciconia.ciconiabase.navigation
+package com.ciconia.android.base.navigation
 
 import android.os.Bundle
 import android.text.BoringLayout

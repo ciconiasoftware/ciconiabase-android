@@ -1,4 +1,4 @@
-package com.ciconia.ciconiabase
+package com.ciconia.android.ciconiabase
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

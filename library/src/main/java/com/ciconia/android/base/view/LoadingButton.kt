@@ -1,4 +1,4 @@
-package com.ciconia.ciconiabase.view
+package com.ciconia.android.base.view
 
 import android.content.Context
 import android.util.AttributeSet
@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import androidx.databinding.BindingAdapter
-import com.ciconia.library.R
+import com.ciconia.android.base.R
 
 class LoadingButton @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0

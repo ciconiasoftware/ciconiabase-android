@@ -1,8 +1,8 @@
-package com.ciconia.ciconiabase.navigation
+package com.ciconia.android.base.navigation
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.ciconia.ciconiabase.search.MaterialSearchView
+import com.ciconia.android.base.search.MaterialSearchView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 

@@ -1,4 +1,4 @@
-package com.ciconia.ciconiabase.search;
+package com.ciconia.android.base.search;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

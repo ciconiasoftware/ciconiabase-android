@@ -1,9 +1,9 @@
-package com.ciconia.ciconiabase.epoxy.models
+package com.ciconia.android.base.epoxy.models
 
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
-import com.ciconia.ciconiabase.epoxy.KotlinEpoxyHolder
-import com.ciconia.library.R2
+import com.ciconia.android.base.epoxy.KotlinEpoxyHolder
+import com.ciconia.android.base.R2
 
 
 @EpoxyModelClass(layout = R2.layout.row_loading_view_model)

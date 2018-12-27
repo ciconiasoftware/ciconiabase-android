@@ -1,4 +1,4 @@
-package com.ciconia.ciconiabase.epoxy.models
+package com.ciconia.android.base.epoxy.models
 
 import android.view.View
 import android.widget.ImageView
@@ -9,9 +9,9 @@ import androidx.annotation.StringRes
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
-import com.ciconia.ciconiabase.epoxy.KotlinEpoxyHolder
-import com.ciconia.library.R
-import com.ciconia.library.R2
+import com.ciconia.android.base.epoxy.KotlinEpoxyHolder
+import com.ciconia.android.base.R
+import com.ciconia.android.base.R2
 
 
 @EpoxyModelClass(layout = R2.layout.model_settings_item)

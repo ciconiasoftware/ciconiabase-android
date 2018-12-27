@@ -1,4 +1,4 @@
-package com.ciconia.ciconiabase
+package com.ciconia.android.ciconiabase
 
 import org.junit.Test
 

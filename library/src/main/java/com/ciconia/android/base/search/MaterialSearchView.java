@@ -1,4 +1,4 @@
-package com.ciconia.ciconiabase.search;
+package com.ciconia.android.base.search;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -32,7 +32,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.ciconia.library.R;
+import com.ciconia.android.base.R;
 
 import java.lang.reflect.Field;
 import java.util.List;

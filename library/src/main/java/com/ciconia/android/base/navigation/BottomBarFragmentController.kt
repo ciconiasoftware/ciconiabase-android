@@ -1,4 +1,4 @@
-package com.ciconia.ciconiabase.navigation
+package com.ciconia.android.base.navigation
 
 import android.content.Context
 import android.os.Bundle

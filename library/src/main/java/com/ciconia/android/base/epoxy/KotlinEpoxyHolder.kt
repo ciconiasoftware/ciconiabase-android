@@ -1,4 +1,4 @@
-package com.ciconia.ciconiabase.epoxy
+package com.ciconia.android.base.epoxy
 
 import android.view.View
 import com.airbnb.epoxy.EpoxyHolder

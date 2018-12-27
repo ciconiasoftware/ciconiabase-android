@@ -2,7 +2,7 @@ package com.ciconia.ciconiabase
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.ciconia.library.Test
+import com.ciconia.ciconiabase.Test
 
 class MainActivity : AppCompatActivity() {
 

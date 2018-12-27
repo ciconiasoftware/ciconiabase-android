@@ -1,4 +1,4 @@
-package com.ciconia.library;
+package com.ciconia.ciconiabase;
 
 public class CiconiaTest {
 

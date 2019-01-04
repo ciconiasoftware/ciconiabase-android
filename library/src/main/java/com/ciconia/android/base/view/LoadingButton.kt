@@ -10,6 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.databinding.BindingAdapter
 import com.ciconia.android.base.R
 import com.ciconia.android.base.util.isColorDark
@@ -35,7 +38,7 @@ class LoadingButton @JvmOverloads constructor(
 
         @JvmStatic @BindingAdapter("app:buttonBackgroundColor")
         fun setButtonBackground(view: LoadingButton, hexColorValue: Int) {
-            view.button.background.setColorFilter(hexColorValue, PorterDuff.Mode.SRC_ATOP)
+            view.button.backgroundTintList = ColorStateList.valueOf(hexColorValue)
             view.button.setTextColor(if (isColorDark(hexColorValue)) Color.WHITE else Color.BLACK)
             view.progressBar.indeterminateTintList = ColorStateList.valueOf(if (isColorDark(hexColorValue)) Color.WHITE else Color.BLACK)
 

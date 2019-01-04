@@ -25,7 +25,7 @@
                 android:id="@+id/loading_button"
                 android:layout_width="match_parent"
                 app:buttonText="@{@string/app_name}"
-                app:buttonBackgroundColor="@{@color/colorGray}"
+                app:buttonBackgroundColor="@{@color/colorPrimary}"
                 android:layout_height="wrap_content"
                 android:onButtonClick="@{()->presenter.onButtonPressed()}"/>
 

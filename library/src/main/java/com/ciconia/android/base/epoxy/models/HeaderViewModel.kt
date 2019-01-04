@@ -16,7 +16,7 @@ abstract class HeaderViewModel : EpoxyModelWithHolder<HeaderViewModel.Holder>() 
 
     @EpoxyAttribute lateinit var title: String
     @EpoxyAttribute var separatorVisible: Boolean = false
-
+    @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash) var titleLayoutParams: LinearLayout.LayoutParams? = null
 
     override fun bind(holder: Holder) {
         super.bind(holder)
@@ -25,6 +25,10 @@ abstract class HeaderViewModel : EpoxyModelWithHolder<HeaderViewModel.Holder>() 
             holder.separator.visibility = View.VISIBLE
         else
             holder.separator.visibility = View.GONE
+
+        titleLayoutParams?.let {
+            holder.title.layoutParams = it
+        }
     }
 
     class Holder : KotlinEpoxyHolder() {

@@ -33,6 +33,24 @@ class LoadingButton @JvmOverloads constructor(
         fun setOnClickListener(view: LoadingButton, onClick: View.OnClickListener?) {
             view.button.setOnClickListener(onClick)
         }
+
+        @JvmStatic @BindingAdapter("app:buttonColor")
+        fun setButtonColor(view: LoadingButton, color: Int) {
+            view.buttonColor = color
+            view.drawButton()
+        }
+
+        @JvmStatic @BindingAdapter("app:textColor")
+        fun setTextColor(view: LoadingButton, color: Int) {
+            view.textColor = color
+            view.drawButton()
+        }
+
+        @JvmStatic @BindingAdapter("app:buttonText")
+        fun setButtonText(view: LoadingButton, text: String) {
+            view.text = text
+            view.button.text = text
+        }
     }
 
     init {
@@ -46,6 +64,10 @@ class LoadingButton @JvmOverloads constructor(
 
 
         button.text = text
+        drawButton()
+    }
+
+    private fun drawButton() {
         if (buttonColor != -1)
             button.backgroundTintList = ColorStateList.valueOf(buttonColor)
 

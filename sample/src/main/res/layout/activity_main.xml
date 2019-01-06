@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <import type="androidx.core.content.ContextCompat" />
 
         <import type="android.view.View" />
@@ -22,13 +23,21 @@
             android:orientation="vertical">
 
             <com.ciconia.android.base.view.LoadingButton
-                android:id="@+id/loading_button"
+                android:id="@+id/loading_button1"
                 android:layout_width="match_parent"
-                app:buttonText="@{@string/app_name}"
-                app:buttonBackgroundColor="@{@color/colorPrimary}"
                 android:layout_height="wrap_content"
-                android:onButtonClick="@{()->presenter.onButtonPressed()}"/>
+                app:buttonColor="@color/colorPrimaryDark"
+                app:buttonText="@string/app_name"
+                app:textColor="@color/colorAccent"
+                app:onButtonClick="@{()->presenter.onButtonPressed()}" />
 
+            <com.ciconia.android.base.view.LoadingButton
+                android:id="@+id/loading_button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:buttonColor="@color/colorPrimary"
+                app:buttonText="@string/app_name"
+                app:onButtonClick="@{()->presenter.onButton2Pressed()}" />
         </LinearLayout>
 
 

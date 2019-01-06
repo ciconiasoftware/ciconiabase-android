@@ -24,30 +24,14 @@ class LoadingButton @JvmOverloads constructor(
     private var button: Button
     private var progressBar: ProgressBar
     private var text: String? = null
+    private var buttonColor: Int = -1
+    private var textColor: Int = -1
 
     companion object {
 
-        var onButtonClickListener: View.OnClickListener? = null
-
-        @JvmStatic @BindingAdapter("android:onButtonClick")
-        fun setOnClickListener(view: View, onClick: View.OnClickListener?) {
-            if (onClick != null) {
-                onButtonClickListener = onClick
-            }
-        }
-
-        @JvmStatic @BindingAdapter("app:buttonBackgroundColor")
-        fun setButtonBackground(view: LoadingButton, hexColorValue: Int) {
-            view.button.backgroundTintList = ColorStateList.valueOf(hexColorValue)
-            view.button.setTextColor(if (isColorDark(hexColorValue)) Color.WHITE else Color.BLACK)
-            view.progressBar.indeterminateTintList = ColorStateList.valueOf(if (isColorDark(hexColorValue)) Color.WHITE else Color.BLACK)
-
-        }
-
-        @JvmStatic @BindingAdapter("app:buttonText")
-        fun setButtonText(view: LoadingButton, text: String) {
-            view.text = text
-            view.button.text = text
+        @JvmStatic @BindingAdapter("app:onButtonClick")
+        fun setOnClickListener(view: LoadingButton, onClick: View.OnClickListener?) {
+            view.button.setOnClickListener(onClick)
         }
     }
 
@@ -55,11 +39,22 @@ class LoadingButton @JvmOverloads constructor(
         LayoutInflater.from(context).inflate(R.layout.loading_button, this, true)
         button = findViewById(R.id.btn)
         progressBar = findViewById(R.id.pb)
-        button.setOnClickListener { v ->
-            onButtonClickListener?.let {
-                if (!isInProgress())
-                    it.onClick(v)
-            }
+        val a = context.theme.obtainStyledAttributes(attrs, R.styleable.LoadingButton, 0, 0)
+        text = a.getString(R.styleable.LoadingButton_buttonText)
+        buttonColor = a.getColor(R.styleable.LoadingButton_buttonColor, -1)
+        textColor = a.getColor(R.styleable.LoadingButton_textColor, -1)
+
+
+        button.text = text
+        if (buttonColor != -1)
+            button.backgroundTintList = ColorStateList.valueOf(buttonColor)
+
+        if (textColor != -1) {
+            button.setTextColor(textColor)
+            progressBar.indeterminateTintList = ColorStateList.valueOf(textColor)
+        } else {
+            button.setTextColor(if (isColorDark(buttonColor)) Color.WHITE else Color.BLACK)
+            progressBar.indeterminateTintList = ColorStateList.valueOf(if (isColorDark(buttonColor)) Color.WHITE else Color.BLACK)
         }
     }
 
@@ -79,5 +74,7 @@ class LoadingButton @JvmOverloads constructor(
         return progressBar.visibility == View.VISIBLE
     }
 
-
+    public fun setButtonOnClick(onClick: OnClickListener?) {
+        button.setOnClickListener(onClick)
+    }
 }

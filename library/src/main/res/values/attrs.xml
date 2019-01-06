@@ -6,7 +6,9 @@
     </declare-styleable>
 
     <declare-styleable name="LoadingButton">
-        <attr name="text" format="string" />
+        <attr name="buttonText" format="string"/>
+        <attr name="buttonColor" format="color" />
+        <attr name="textColor" format="color" />
     </declare-styleable>
 
 </resources>

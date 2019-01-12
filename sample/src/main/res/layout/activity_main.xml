@@ -30,14 +30,14 @@
                 app:buttonText="@string/app_name"
                 app:onButtonClick="@{()->presenter.onButtonPressed()}" />
 
-            <!--<com.ciconia.android.base.view.LoadingButton-->
-                <!--android:id="@+id/loading_button2"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--app:buttonColor="@{presenter.accentColor}"-->
-                <!--app:textColor="@color/colorWhite"-->
-                <!--app:buttonText="sadasdas"-->
-                <!--app:onButtonClick="@{()->presenter.onButton2Pressed()}" />-->
+            <com.ciconia.android.base.view.LoadingButton
+                android:id="@+id/loading_button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:buttonColor="@{presenter.accentColor}"
+                app:textColor="@color/colorWhite"
+                app:buttonText="sadasdas"
+                app:onButtonClick="@{()->presenter.onButton2Pressed()}" />
         </LinearLayout>
 
 

@@ -32,11 +32,11 @@ class MainActivity : AppCompatActivity() {
         }, 500)
     }
 
-//    fun onButton2Pressed() {
-//        Toast.makeText(this,"2",Toast.LENGTH_SHORT).show()
-//        binding.loadingButton2.onStartLoading()
-//        Handler().postDelayed({
-//            binding.loadingButton2.onStopLoading()
-//        }, 500)
-//    }
+    fun onButton2Pressed() {
+        Toast.makeText(this,"2",Toast.LENGTH_SHORT).show()
+        binding.loadingButton2.onStartLoading()
+        Handler().postDelayed({
+            binding.loadingButton2.onStopLoading()
+        }, 500)
+    }
 }

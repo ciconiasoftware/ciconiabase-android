@@ -26,8 +26,6 @@
                 android:id="@+id/loading_button1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:textColor="#FFFFFF"
-                app:buttonText="@string/app_name"
                 app:onButtonClick="@{()->presenter.onButtonPressed()}" />
 
             <com.ciconia.android.base.view.LoadingButton

@@ -68,6 +68,25 @@ class LoadingButton @JvmOverloads constructor(
         drawButton()
     }
 
+    fun setButtonOnClickListener(onClick: View.OnClickListener?) {
+        button.setOnClickListener(onClick)
+    }
+
+    fun setButtonColor(color: Int) {
+        buttonColor = color
+        drawButton()
+    }
+
+    fun setTextColor(color: Int) {
+        textColor = color
+        drawButton()
+    }
+
+    fun setButtonText(text: String) {
+        this.text = text
+        button.text = text
+    }
+
     private fun drawButton() {
         button.text = text
         if (buttonColor != 0)
@@ -84,12 +103,12 @@ class LoadingButton @JvmOverloads constructor(
 
     public fun onStartLoading() {
         button.text = ""
-//        button.isEnabled = false
+        button.isEnabled = false
         progressBar.visibility = View.VISIBLE
     }
 
     public fun onStopLoading() {
-//        button.isEnabled = true
+       button.isEnabled = true
         button.text = text
         progressBar.visibility = View.GONE
     }

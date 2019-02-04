@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         binding.loadingButton1.setButtonColor(Color.WHITE)
         binding.loadingButton1.setButtonText("HALLO")
         accentColor.set(Color.BLACK)
+        binding.loadingButton1.setButtonColor(Color.BLUE)
     }
 
     fun onButtonPressed() {

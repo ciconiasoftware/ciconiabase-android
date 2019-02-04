@@ -90,7 +90,7 @@ class LoadingButton @JvmOverloads constructor(
     private fun drawButton() {
         button.text = text
         if (buttonColor != 0)
-            button.backgroundTintList = ColorStateList.valueOf(buttonColor)
+            button.background.setColorFilter(buttonColor, PorterDuff.Mode.SRC_ATOP)
 
         if (textColor != 0) {
             button.setTextColor(textColor)

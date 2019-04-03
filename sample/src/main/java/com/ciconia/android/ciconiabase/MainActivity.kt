@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.presenter = this
         binding.loadingButton1.setButtonText("HALLO")
-        accentColor.set(Color.BLACK)
         binding.loadingButton1.setButtonEnabled(false)
     }
 

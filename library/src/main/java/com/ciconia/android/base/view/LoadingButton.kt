@@ -20,8 +20,6 @@ import com.ciconia.android.base.util.isColorDark
 import android.util.TypedValue
 
 
-
-
 class LoadingButton @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
@@ -31,6 +29,7 @@ class LoadingButton @JvmOverloads constructor(
     private var text: String? = null
     private var buttonColor: Int = 0
     private var textColor: Int = 0
+    private lateinit var colorStateList: ColorStateList
 
     companion object {
 
@@ -69,8 +68,17 @@ class LoadingButton @JvmOverloads constructor(
         val a = context.theme.obtainStyledAttributes(attrs, R.styleable.LoadingButton, 0, 0)
         text = a.getString(R.styleable.LoadingButton_buttonText)
         buttonColor = a.getColor(R.styleable.LoadingButton_buttonColor, fetchAccentColor())
-        textColor = a.getColor(R.styleable.LoadingButton_textColor, 0)
-
+        textColor = a.getColor(R.styleable.LoadingButton_textColor, if (isColorDark(buttonColor)) Color.WHITE else Color.BLACK)
+        colorStateList = ColorStateList(
+                arrayOf(
+                        intArrayOf(android.R.attr.state_enabled),
+                        intArrayOf(-android.R.attr.state_enabled)
+                ),
+                intArrayOf(
+                        buttonColor,
+                        adjustAlpha(buttonColor, 0.3f)
+                )
+        )
         drawButton()
     }
 
@@ -95,43 +103,15 @@ class LoadingButton @JvmOverloads constructor(
 
     fun setButtonEnabled(isEnabled: Boolean) {
         button.isEnabled = isEnabled
-        when {
-            !isEnabled -> button.setTextColor(Color.GRAY)
-            textColor != 0 -> {
-                button.setTextColor(textColor)
-                progressBar.indeterminateTintList = ColorStateList.valueOf(textColor)
-            }
-            else -> {
-                button.setTextColor(if (isColorDark(buttonColor)) Color.WHITE else Color.BLACK)
-                progressBar.indeterminateTintList = ColorStateList.valueOf(if (isColorDark(buttonColor)) Color.WHITE else Color.BLACK)
-            }
-        }
+        drawButton()
     }
 
     private fun drawButton() {
-        val colorStateList = ColorStateList(
-                arrayOf(
-                        intArrayOf(android.R.attr.state_enabled),
-                        intArrayOf(-android.R.attr.state_enabled)
-                ),
-                intArrayOf(
-                        buttonColor,
-                        adjustAlpha(buttonColor, 0.3f)
-                )
-        )
         button.backgroundTintList = colorStateList
-
-
         button.text = text
+        button.setTextColor(textColor)
+        progressBar.indeterminateTintList = ColorStateList.valueOf(textColor)
 
-
-        if (textColor != 0) {
-            button.setTextColor(textColor)
-            progressBar.indeterminateTintList = ColorStateList.valueOf(textColor)
-        } else {
-            button.setTextColor(if (isColorDark(buttonColor)) Color.WHITE else Color.BLACK)
-            progressBar.indeterminateTintList = ColorStateList.valueOf(if (isColorDark(buttonColor)) Color.WHITE else Color.BLACK)
-        }
     }
 
     public fun onStartLoading() {

@@ -80,7 +80,7 @@ class LoadingButton @JvmOverloads constructor(
                 ),
                 intArrayOf(
                         buttonColor,
-                        adjustAlpha(buttonColor, 0.5f)
+                        ContextCompat.getColor(context,R.color.disabledButtonBackground)
                 )
         )
         button.backgroundTintList = colorStateList

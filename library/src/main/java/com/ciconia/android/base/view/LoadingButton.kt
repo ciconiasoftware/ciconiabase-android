@@ -80,12 +80,16 @@ class LoadingButton @JvmOverloads constructor(
                 ),
                 intArrayOf(
                         buttonColor,
-                        adjustAlpha(buttonColor, 0.3f)
+                        adjustAlpha(buttonColor, 0.5f)
                 )
         )
         button.backgroundTintList = colorStateList
         button.text = text
-        button.setTextColor(textColor)
+        if (button.isEnabled)
+            button.setTextColor(textColor)
+        else
+            button.setTextColor(Color.GRAY)
+
         progressBar.indeterminateTintList = ColorStateList.valueOf(textColor)
 
     }
@@ -136,12 +140,9 @@ class LoadingButton @JvmOverloads constructor(
 
     private fun fetchAccentColor(): Int {
         val typedValue = TypedValue()
-
         val a = context.obtainStyledAttributes(typedValue.data, intArrayOf(R.attr.colorAccent))
         val color = a.getColor(0, 0)
-
         a.recycle()
-
         return color
     }
 }

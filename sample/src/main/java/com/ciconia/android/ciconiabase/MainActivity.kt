@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.presenter = this
+        accentColor.set(-231214)
         binding.loadingButton1.setButtonText("HALLO")
         binding.loadingButton1.setButtonEnabled(false)
     }

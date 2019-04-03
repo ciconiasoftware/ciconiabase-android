@@ -32,7 +32,7 @@
                 android:id="@+id/loading_button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:buttonColor="@{presenter.accentColor}"
+                app:buttonColor="@color/colorAccent"
                 app:buttonText="sadasdas"
                 app:onButtonClick="@{()->presenter.onButton2Pressed()}" />
 

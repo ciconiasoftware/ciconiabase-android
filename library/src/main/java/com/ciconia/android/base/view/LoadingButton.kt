@@ -67,8 +67,8 @@ class LoadingButton @JvmOverloads constructor(
         progressBar = findViewById(R.id.pb)
         val a = context.theme.obtainStyledAttributes(attrs, R.styleable.LoadingButton, 0, 0)
         text = a.getString(R.styleable.LoadingButton_buttonText)
-        buttonColor = a.getColor(R.styleable.LoadingButton_buttonColor, fetchAccentColor())
-        textColor = a.getColor(R.styleable.LoadingButton_textColor, if (isColorDark(buttonColor)) Color.WHITE else Color.BLACK)
+        buttonColor = a.getColor(R.styleable.LoadingButton_buttonColor, 0)
+        textColor = a.getColor(R.styleable.LoadingButton_textColor, 0)
         drawButton()
     }
 
@@ -83,8 +83,15 @@ class LoadingButton @JvmOverloads constructor(
                         ContextCompat.getColor(context,R.color.disabledButtonBackground)
                 )
         )
+
         button.backgroundTintList = colorStateList
         button.text = text
+
+
+        if (textColor == 0) {
+            textColor = if (isColorDark(buttonColor)) Color.WHITE else Color.BLACK
+        }
+
         if (button.isEnabled)
             button.setTextColor(textColor)
         else

@@ -15,7 +15,9 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.databinding.BindingAdapter
 import com.ciconia.android.base.R
+import com.ciconia.android.base.util.adjustAlpha
 import com.ciconia.android.base.util.isColorDark
+
 
 class LoadingButton @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
@@ -65,6 +67,7 @@ class LoadingButton @JvmOverloads constructor(
         text = a.getString(R.styleable.LoadingButton_buttonText)
         buttonColor = a.getColor(R.styleable.LoadingButton_buttonColor, 0)
         textColor = a.getColor(R.styleable.LoadingButton_textColor, 0)
+
         drawButton()
     }
 
@@ -87,10 +90,37 @@ class LoadingButton @JvmOverloads constructor(
         button.text = text
     }
 
+    fun setButtonEnabled(isEnabled: Boolean) {
+        button.isEnabled = isEnabled
+        when {
+            !isEnabled -> button.setTextColor(Color.GRAY)
+            textColor != 0 -> {
+                button.setTextColor(textColor)
+                progressBar.indeterminateTintList = ColorStateList.valueOf(textColor)
+            }
+            else -> {
+                button.setTextColor(if (isColorDark(buttonColor)) Color.WHITE else Color.BLACK)
+                progressBar.indeterminateTintList = ColorStateList.valueOf(if (isColorDark(buttonColor)) Color.WHITE else Color.BLACK)
+            }
+        }
+    }
+
     private fun drawButton() {
+        val colorStateList = ColorStateList(
+                arrayOf(
+                        intArrayOf(android.R.attr.state_enabled),
+                        intArrayOf(-android.R.attr.state_enabled)
+                ),
+                intArrayOf(
+                        buttonColor,
+                        adjustAlpha(buttonColor, 0.1f)
+                )
+        )
+        button.backgroundTintList = colorStateList
+
+
         button.text = text
-        if (buttonColor != 0)
-            button.background.setColorFilter(buttonColor, PorterDuff.Mode.SRC_ATOP)
+
 
         if (textColor != 0) {
             button.setTextColor(textColor)
@@ -103,12 +133,12 @@ class LoadingButton @JvmOverloads constructor(
 
     public fun onStartLoading() {
         button.text = ""
-        button.isEnabled = false
+        button.isClickable = false
         progressBar.visibility = View.VISIBLE
     }
 
     public fun onStopLoading() {
-       button.isEnabled = true
+        button.isClickable = true
         button.text = text
         progressBar.visibility = View.GONE
     }

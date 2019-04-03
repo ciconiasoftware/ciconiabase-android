@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
         binding.loadingButton1.setButtonText("HALLO")
         accentColor.set(Color.BLACK)
         binding.loadingButton1.setButtonColor(Color.BLUE)
+
+        binding.loadingButton1.setButtonEnabled(false)
     }
 
     fun onButtonPressed() {
@@ -39,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this,"2",Toast.LENGTH_SHORT).show()
         binding.loadingButton2.onStartLoading()
         Handler().postDelayed({
+            binding.loadingButton1.setButtonEnabled(true)
             binding.loadingButton2.onStopLoading()
         }, 500)
     }

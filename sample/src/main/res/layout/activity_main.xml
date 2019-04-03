@@ -36,6 +36,12 @@
                 app:textColor="@color/colorWhite"
                 app:buttonText="sadasdas"
                 app:onButtonClick="@{()->presenter.onButton2Pressed()}" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hallo"
+                android:enabled="false"/>
         </LinearLayout>
 
 

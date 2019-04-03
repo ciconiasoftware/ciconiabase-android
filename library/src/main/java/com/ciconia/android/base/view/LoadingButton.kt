@@ -57,7 +57,7 @@ class LoadingButton @JvmOverloads constructor(
         @BindingAdapter("app:buttonText")
         fun setButtonText(view: LoadingButton, text: String) {
             view.text = text
-            view.drawButton()
+            view.button.text = text
         }
     }
 
@@ -73,17 +73,13 @@ class LoadingButton @JvmOverloads constructor(
     }
 
     private fun drawButton() {
-
-        if (buttonColor == 0)
-            buttonColor = fetchAccentColor()
-
         colorStateList = ColorStateList(
                 arrayOf(
                         intArrayOf(android.R.attr.state_enabled),
                         intArrayOf(-android.R.attr.state_enabled)
                 ),
                 intArrayOf(
-                        buttonColor,
+                        if (buttonColor == 0) fetchAccentColor() else buttonColor,
                         ContextCompat.getColor(context, R.color.disabledButtonBackground)
                 )
         )
@@ -92,17 +88,17 @@ class LoadingButton @JvmOverloads constructor(
         button.text = text
 
 
-        if (textColor == 0) {
-            textColor = if (isColorDark(buttonColor)) Color.WHITE else Color.BLACK
-        }
-
-        if (button.isEnabled)
-            button.setTextColor(textColor)
-        else
+        if (button.isEnabled) {
+            if (textColor != 0) {
+                button.setTextColor(textColor)
+                progressBar.indeterminateTintList = ColorStateList.valueOf(textColor)
+            } else {
+                button.setTextColor(if (isColorDark(buttonColor)) Color.WHITE else Color.BLACK)
+                progressBar.indeterminateTintList = ColorStateList.valueOf(if (isColorDark(buttonColor)) Color.WHITE else Color.BLACK)
+            }
+        } else {
             button.setTextColor(Color.GRAY)
-
-        progressBar.indeterminateTintList = ColorStateList.valueOf(textColor)
-
+        }
     }
 
     fun setButtonOnClickListener(onClick: View.OnClickListener?) {

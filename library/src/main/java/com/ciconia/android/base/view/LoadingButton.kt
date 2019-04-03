@@ -17,6 +17,9 @@ import androidx.databinding.BindingAdapter
 import com.ciconia.android.base.R
 import com.ciconia.android.base.util.adjustAlpha
 import com.ciconia.android.base.util.isColorDark
+import android.util.TypedValue
+
+
 
 
 class LoadingButton @JvmOverloads constructor(
@@ -65,7 +68,7 @@ class LoadingButton @JvmOverloads constructor(
         progressBar = findViewById(R.id.pb)
         val a = context.theme.obtainStyledAttributes(attrs, R.styleable.LoadingButton, 0, 0)
         text = a.getString(R.styleable.LoadingButton_buttonText)
-        buttonColor = a.getColor(R.styleable.LoadingButton_buttonColor, 0)
+        buttonColor = a.getColor(R.styleable.LoadingButton_buttonColor, fetchAccentColor())
         textColor = a.getColor(R.styleable.LoadingButton_textColor, 0)
 
         drawButton()
@@ -113,7 +116,7 @@ class LoadingButton @JvmOverloads constructor(
                 ),
                 intArrayOf(
                         buttonColor,
-                        adjustAlpha(buttonColor, 0.1f)
+                        adjustAlpha(buttonColor, 0.3f)
                 )
         )
         button.backgroundTintList = colorStateList
@@ -149,5 +152,16 @@ class LoadingButton @JvmOverloads constructor(
 
     public fun setButtonOnClick(onClick: OnClickListener?) {
         button.setOnClickListener(onClick)
+    }
+
+    private fun fetchAccentColor(): Int {
+        val typedValue = TypedValue()
+
+        val a = context.obtainStyledAttributes(typedValue.data, intArrayOf(R.attr.colorAccent))
+        val color = a.getColor(0, 0)
+
+        a.recycle()
+
+        return color
     }
 }

@@ -73,6 +73,10 @@ class LoadingButton @JvmOverloads constructor(
     }
 
     private fun drawButton() {
+
+        if (buttonColor == 0)
+            buttonColor = fetchAccentColor()
+
         colorStateList = ColorStateList(
                 arrayOf(
                         intArrayOf(android.R.attr.state_enabled),
@@ -80,7 +84,7 @@ class LoadingButton @JvmOverloads constructor(
                 ),
                 intArrayOf(
                         buttonColor,
-                        ContextCompat.getColor(context,R.color.disabledButtonBackground)
+                        ContextCompat.getColor(context, R.color.disabledButtonBackground)
                 )
         )
 

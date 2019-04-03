@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         binding.loadingButton1.onStartLoading()
         Handler().postDelayed({
             binding.loadingButton1.onStopLoading()
+            binding.loadingButton1.setButtonEnabled(false)
         }, 500)
     }
 

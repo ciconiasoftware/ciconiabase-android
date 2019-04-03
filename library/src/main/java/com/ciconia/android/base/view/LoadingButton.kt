@@ -57,7 +57,7 @@ class LoadingButton @JvmOverloads constructor(
         @BindingAdapter("app:buttonText")
         fun setButtonText(view: LoadingButton, text: String) {
             view.text = text
-            view.button.text = text
+            view.drawButton()
         }
     }
 
@@ -69,6 +69,10 @@ class LoadingButton @JvmOverloads constructor(
         text = a.getString(R.styleable.LoadingButton_buttonText)
         buttonColor = a.getColor(R.styleable.LoadingButton_buttonColor, fetchAccentColor())
         textColor = a.getColor(R.styleable.LoadingButton_textColor, if (isColorDark(buttonColor)) Color.WHITE else Color.BLACK)
+        drawButton()
+    }
+
+    private fun drawButton() {
         colorStateList = ColorStateList(
                 arrayOf(
                         intArrayOf(android.R.attr.state_enabled),
@@ -79,7 +83,11 @@ class LoadingButton @JvmOverloads constructor(
                         adjustAlpha(buttonColor, 0.3f)
                 )
         )
-        drawButton()
+        button.backgroundTintList = colorStateList
+        button.text = text
+        button.setTextColor(textColor)
+        progressBar.indeterminateTintList = ColorStateList.valueOf(textColor)
+
     }
 
     fun setButtonOnClickListener(onClick: View.OnClickListener?) {
@@ -104,14 +112,6 @@ class LoadingButton @JvmOverloads constructor(
     fun setButtonEnabled(isEnabled: Boolean) {
         button.isEnabled = isEnabled
         drawButton()
-    }
-
-    private fun drawButton() {
-        button.backgroundTintList = colorStateList
-        button.text = text
-        button.setTextColor(textColor)
-        progressBar.indeterminateTintList = ColorStateList.valueOf(textColor)
-
     }
 
     public fun onStartLoading() {
